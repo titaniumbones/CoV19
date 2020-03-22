@@ -1,0 +1,8 @@
+## export functions
+export(
+  getdatacovidtracking,
+  getdatajhu
+)
+
+## Imports
+import(ggplot2)
