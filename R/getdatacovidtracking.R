@@ -15,13 +15,17 @@ getdatacovidtracking <- function(append=TRUE){
     url <- "http://covidtracking.com/api/states/daily.csv"
     statedata <- try(read.csv(url), silent=TRUE)
     if(!inherits(statedata, "try-error")){
-      save(statedata, file="states.RData")
+      statedata <- statedata[,colnames(statedata)!="dateChecked"]
+      statedata$date <- as.Date(as.character(statedata$date), "%Y%m%d")
+      states <- statedata
+      save(states, file="data/states.RData")
     }else{
       cat("Server error. Data could not be downloaded.\n")
       return()
     }
   }else{
     load("data/states.RData")
+    statedata <- states
     statedatadate <- as.Date(statedata$dateChecked)
     if(max(statedatadate) == Sys.Date()){
       ans <- readline("The state data is has the same date as current date. Still update? (y/n)")
@@ -30,11 +34,13 @@ getdatacovidtracking <- function(append=TRUE){
     save(statedata, file="data/statesold.RData")
     url <- "https://covidtracking.com/api/states.csv"
     stateday <- read.csv(url)
-    stateday$date <- format(as.Date(stateday$dateChecked),"%Y%m%d")
+    stateday$date <- as.Date(stateday$dateChecked)
+    stateday <- stateday[,colnames(stateday)!="dateChecked"]
     daydate <- as.Date(stateday$dateChecked)[1]
     statedata <- statedata[statedatadate != daydate,]
     statecols <- colnames(statedata)
     statedata <- rbind(stateday[,statecols],statedata)
-    save(statedata, file="data/states.RData")
+    states <- statedata
+    save(states, file="data/states.RData")
   }
 }

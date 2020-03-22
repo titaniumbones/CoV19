@@ -19,6 +19,6 @@ getdatajhu <- function(){
     worlddata <- cbind(getx(worlddataconfirmed,"positive"),death=getx(worlddatadeaths,"death")$death, recovered=getx(worlddatarecovered,"recovered")$recovered)
     
     worlddata$date <- as.Date(str_remove(worlddata$date,"X"),"%m.%d.%y")
-    save(worlddata, file="data/world.RData")
-  }
+    world <- worlddata
+    save(world, file="data/world.RData")
 }

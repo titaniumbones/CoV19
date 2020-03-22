@@ -12,7 +12,6 @@ Depends:
    grid
 Imports: Rdpack
 Author: Eli Holmes, Seattle, USA
-Maintainer: e2holmes@gmail.com
 Description: Code, figures and data
 License: GPL-2
 LazyData: yes

@@ -18,6 +18,6 @@ getdataitaly <- function(){
     colnames(italydata) <- c("date", "region", "positive", "death", "recovered", "hospitalized", "ICU")
 
     italydata$date <- as.Date(italydata$date)
-    save(italydata, file="data/italy.RData")
-  }
+    italy <- italydata
+    save(italy, file="data/italy.RData")
 }

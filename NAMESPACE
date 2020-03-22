@@ -1,7 +1,9 @@
 ## export functions
 export(
   getdatacovidtracking,
-  getdatajhu
+  getdatajhu,
+  getdataitaly,
+  plot1
 )
 
 ## Imports
