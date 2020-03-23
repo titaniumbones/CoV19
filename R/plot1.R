@@ -37,6 +37,7 @@ plot1 <- function(data=c("states","world","italy"), region, lockdown=NULL){
     xlab("")
   if(!is.null(x$active)) p <- p + geom_col(aes(x=date, y=active),fill="yellow", col="yellow") 
   if(!is.null(x$hospitalized)) p <- p + geom_col(aes(x=date, y=hospitalized),fill="blue", col="blue")
+  p <- p + geom_col(aes(x=date, y=death),fill="red", col="red")
   p <- p +
     geom_line(aes(x=date, y=a+b*new.cases)) +
     geom_point(aes(x=date, y=a+b*new.cases))
@@ -54,14 +55,19 @@ plot1 <- function(data=c("states","world","italy"), region, lockdown=NULL){
   p <- p + 
     geom_rect(mapping=aes(xmin=min(x$date), xmax=min(x$date)+xw, ymin=0.875*max(x$positive), ymax=0.95*max(x$positive)), fill="grey") +
     annotate("text", x=min(x$date)+xw, y=(0.95-(0.95-0.875)/2)*max(x$positive), label="  Total",hjust=0)
-  y1 <- y2 <- 0.85 # weirdly ggplot objects change when the variable val changes, so can't just update y1
+  y1 <- y2 <- y3 <- 0.85 # weirdly ggplot objects change when the variable val changes, so can't just update y1
   if(!is.null(x$hospitalized)){
     p <- p + geom_rect(mapping=aes(xmin=min(x$date), xmax=min(x$date)+xw, ymin=(y1-0.075)*max(x$positive), ymax=y1*max(x$positive)), fill="blue") +
     annotate("text", x=min(x$date)+xw, y=(y1-0.075/2)*max(x$positive), label="  Hospitalized",hjust=0)
-    y2 <- y1-.1
+    y2 <- y1-0.1
   }
-  if(!is.null(x$active)) p <- p + geom_rect(mapping=aes(xmin=min(x$date), xmax=min(x$date)+xw, ymin=(y2-0.075)*max(x$positive), ymax=y2*max(x$positive)), fill="yellow")  +
+  if(!is.null(x$active)){
+    p <- p + geom_rect(mapping=aes(xmin=min(x$date), xmax=min(x$date)+xw, ymin=(y2-0.075)*max(x$positive), ymax=y2*max(x$positive)), fill="yellow")  +
     annotate("text", x=min(x$date)+xw, y=(y2-0.075/2)*max(x$positive),hjust=0, label="  Active")
-  
+    y3 <- y2-0.1
+  }
+  p <- p + geom_rect(mapping=aes(xmin=min(x$date), xmax=min(x$date)+xw, ymin=(y3-0.075)*max(x$positive), ymax=y3*max(x$positive)), fill="red")  +
+    annotate("text", x=min(x$date)+xw, y=(y3-0.075/2)*max(x$positive),hjust=0, label="  Deaths")
+
   p + ggtitle(region)
 }
