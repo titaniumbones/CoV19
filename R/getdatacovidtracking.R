@@ -18,6 +18,8 @@ getdatacovidtracking <- function(append=TRUE){
       statedata <- statedata[,colnames(statedata)!="dateChecked"]
       statedata$date <- as.Date(as.character(statedata$date), "%Y%m%d")
       states <- statedata
+      load("data/states.RData")
+      save(states, file="data/statesold.RData")
       save(states, file="data/states.RData")
     }else{
       cat("Server error. Data could not be downloaded.\n")
