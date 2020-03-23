@@ -1,0 +1,47 @@
+on:
+  push:
+
+name: UpdateData
+
+jobs:
+  getdata_job:
+    # runs-on: ubuntu-latest
+    runs-on: macos-latest
+    name: Update Data
+    steps:
+      # - name: Install system deps
+      #   run: |
+      #     sudo apt install build-essential libcurl4-gnutls-dev libxml2-dev libssl-dev
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch      
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          path: main
+      - name: Set Up r
+        uses: r-lib/actions/setup-r@v1
+      - name: install r packages
+        run: |
+          Rscript -e 'install.packages("devtools")'
+          Rscript -e 'library("devtools"); install_github("eeholmes/CoV19"); install.packages("tidyr")'
+      - name: Get Data
+        run: |
+          cd main
+          Rscript -e 'library("CoV19"); getdatastates(); getdataitaly(); getdataworld()'
+      - name: Commit Changes
+        run: |
+          cd main
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Data Fetching Action"
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Update rdata" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          directory: main
+          branch: ${{ steps.extract_branch.outputs.branch }}
+
+      
