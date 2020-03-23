@@ -7,9 +7,11 @@ is downloaded from JHU. The US data is downloaded from JHU and
 CovidTracking. The Italy data is downloaded from the Italian CDC
 (Protezione Civile)
 
-Sources: \* <https://github.com/CSSEGISandData/COVID-19> \*
-<https://covidtracking.com/api/> \*
-<https://github.com/pcm-dpc/COVID-19>
+Sources:
+
+  - <https://github.com/CSSEGISandData/COVID-19>
+  - <https://covidtracking.com/api/>
+  - <https://github.com/pcm-dpc/COVID-19>
 
 To install the package
 

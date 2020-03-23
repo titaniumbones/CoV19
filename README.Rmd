@@ -7,6 +7,7 @@ output: github_document
 This is a package for exploring some of the CoV-19 data. The world data is downloaded from JHU. The US data is downloaded from JHU and CovidTracking. The Italy data is downloaded from the Italian CDC (Protezione Civile) 
 
 Sources:
+
 * https://github.com/CSSEGISandData/COVID-19
 * https://covidtracking.com/api/ 
 * https://github.com/pcm-dpc/COVID-19
