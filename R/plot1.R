@@ -31,7 +31,8 @@ plot1 <- function(data=c("states","world","italy"), location=NULL, lockdown=NULL
     scale_y_continuous("Cumulative Cases", 
                        sec.axis = sec_axis(~ (. - a)/b, name = "Daily New Cases"))
   if(!is.null(lockdown)){
-    p <- p + geom_vline(xintercept = as.Date(lockdown))
+    p <- p + geom_vline(xintercept = as.Date(lockdown)) +
+    annotate("text", x=as.Date(lockdown), y=max(x$positive), hjust=0, label=" Lockdown", color="red", size=3)
   }
   #legend
   # I know, I know, I should but the data frame in long form and use aes() for legends
@@ -39,11 +40,11 @@ plot1 <- function(data=c("states","world","italy"), location=NULL, lockdown=NULL
   xw = (max(x$date)-min(x$date))*.075
   p <- p + 
     geom_rect(mapping=aes(xmin=min(x$date), xmax=min(x$date)+xw, ymin=0.875*max(x$positive), ymax=0.95*max(x$positive)), fill="grey") +
-    annotate("text", x=min(x$date)+xw+1, y=(0.95-(0.95-0.875)/2)*max(x$positive), label="Total",hjust=0)
+    annotate("text", x=min(x$date)+xw, y=(0.95-(0.95-0.875)/2)*max(x$positive), label="  Total",hjust=0)
   if(!is.null(x$hospitalized)) p <- p + geom_rect(mapping=aes(xmin=min(x$date), xmax=min(x$date)+xw, ymin=0.775*max(x$positive), ymax=0.85*max(x$positive)), fill="blue") +
-    annotate("text", x=min(x$date)+xw+1, y=(0.85-(0.85-0.775)/2)*max(x$positive), label="Hospitalized",hjust=0)
+    annotate("text", x=min(x$date)+xw, y=(0.85-(0.85-0.775)/2)*max(x$positive), label="  Hospitalized",hjust=0)
   if(!is.null(x$active)) p <- p + geom_rect(mapping=aes(xmin=min(x$date), xmax=min(x$date)+xw, ymin=0.675*max(x$positive), ymax=0.75*max(x$positive)), fill="yellow")  +
-    annotate("text", x=min(x$date)+xw+1, y=(0.75-(0.75-0.675)/2)*max(x$positive),hjust=0, label="Active")
+    annotate("text", x=min(x$date)+xw, y=(0.75-(0.75-0.675)/2)*max(x$positive),hjust=0, label="  Active")
   
   p + ggtitle(location)
 }
