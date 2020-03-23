@@ -47,7 +47,7 @@ plot1("italy", "Lombardia", lockdown="2020-03-11")
 Something is odd with the Hubei data in the JHU data set.
 
 ``` r
-plot1("world", "Hubei", lockdown="2020-01-23")
+plot1("world", "Hubei China", lockdown="2020-01-23")
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->

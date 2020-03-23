@@ -25,6 +25,7 @@ plot1 <- function(data=c("states","world","italy"), region, lockdown=NULL){
     cat("Problem. Time series is missing days.\n")
     return(x)
   }
+  if(all(is.na(x$hospitalized))) x$hospitalized <- NULL
   
   ylim.prim <- c(0, max(x$positive, na.rm=TRUE))   
   ylim.sec <- c(0, max(x$new.cases, na.rm=TRUE))
@@ -53,14 +54,14 @@ plot1 <- function(data=c("states","world","italy"), region, lockdown=NULL){
   p <- p + 
     geom_rect(mapping=aes(xmin=min(x$date), xmax=min(x$date)+xw, ymin=0.875*max(x$positive), ymax=0.95*max(x$positive)), fill="grey") +
     annotate("text", x=min(x$date)+xw, y=(0.95-(0.95-0.875)/2)*max(x$positive), label="  Total",hjust=0)
-  y1 <- 0.85
+  y1 <- y2 <- 0.85 # weirdly ggplot objects change when the variable val changes, so can't just update y1
   if(!is.null(x$hospitalized)){
-    p <- p + geom_rect(mapping=aes(xmin=min(x$date), xmax=min(x$date)+xw, ymin=0.775*max(x$positive), ymax=y1*max(x$positive)), fill="blue") +
+    p <- p + geom_rect(mapping=aes(xmin=min(x$date), xmax=min(x$date)+xw, ymin=(y1-0.075)*max(x$positive), ymax=y1*max(x$positive)), fill="blue") +
     annotate("text", x=min(x$date)+xw, y=(y1-0.075/2)*max(x$positive), label="  Hospitalized",hjust=0)
-    y1 <- y1-.1
+    y2 <- y1-.1
   }
-  if(!is.null(x$active)) p <- p + geom_rect(mapping=aes(xmin=min(x$date), xmax=min(x$date)+xw, ymin=0.675*max(x$positive), ymax=y1*max(x$positive)), fill="yellow")  +
-    annotate("text", x=min(x$date)+xw, y=(y1-0.075/2)*max(x$positive),hjust=0, label="  Active")
+  if(!is.null(x$active)) p <- p + geom_rect(mapping=aes(xmin=min(x$date), xmax=min(x$date)+xw, ymin=(y2-0.075)*max(x$positive), ymax=y2*max(x$positive)), fill="yellow")  +
+    annotate("text", x=min(x$date)+xw, y=(y2-0.075/2)*max(x$positive),hjust=0, label="  Active")
   
   p + ggtitle(region)
 }
