@@ -2,15 +2,15 @@
 % Please edit documentation in R/getdataworld.R
 \name{getdataworld}
 \alias{getdataworld}
-\title{Download confirmed, deaths and recovered from JHU database}
+\title{Download confirmed and deaths from new JHU database}
 \usage{
 getdataworld()
 }
 \value{
-Saves a data frame with date, region, positive, death, and recovered to the data folder.
+Saves a data frame with date, region, positive, and death to the data folder.
 }
 \description{
-Download confirmed, deaths and recovered from JHU database
+Download confirmed and deaths from new JHU database
 }
 \examples{
 \dontrun{
