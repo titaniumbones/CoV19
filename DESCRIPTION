@@ -10,7 +10,9 @@ Depends:
    knitr, 
    ggplot2,
    tidyr,
-   grid
+   dplyr,
+   grid,
+   jsonlite
 Imports: Rdpack
 Author: Eli Holmes, Seattle, USA
 Description: Code, figures and data
