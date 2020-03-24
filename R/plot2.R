@@ -43,7 +43,7 @@ plot2 <- function(x, region=NULL, decorate=FALSE){
     geom_line(aes(x=date, y=a+b*new.cases)) +
     geom_point(aes(x=date, y=a+b*new.cases)) +
     geom_line(aes(x=date, y=a+b*new.deaths), linetype="dashed") +
-    geom_point(aes(x=date, y=a+b*new.deaths))
+    geom_point(aes(x=date, y=a+b*new.deaths), color="blue")
   p <- p+scale_x_date(date_labels = "%b %d") +
     scale_y_continuous("Cumulative Cases", 
                        sec.axis = sec_axis(~ (. - a)/b, name = "Daily New Cases and Deaths"))
