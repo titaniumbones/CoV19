@@ -22,7 +22,7 @@ getdatastates <- function(append=FALSE, json=TRUE){
     statedata <- try(read.csv(url), silent=TRUE)
     }else{
       url <- "https://covidtracking.com/api/states/daily"
-      statedata <- try(fromJSON("https://covidtracking.com/api/states/daily"))
+      statedata <- try(jsonlite::fromJSON("https://covidtracking.com/api/states/daily"))
     }
     colnames(statedata)[colnames(statedata)=="state"] <- "region"
     colnames(statedata)[colnames(statedata)=="total"] <- "total.tests"

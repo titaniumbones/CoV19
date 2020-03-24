@@ -8,7 +8,8 @@ export(
   plot2,
   regions,
   my_plot,
-  walomb_plot
+  walomb_plot,
+  updatewebpage
 )
 
 ## Imports

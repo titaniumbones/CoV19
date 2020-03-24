@@ -29,7 +29,7 @@ x <- subset(states, region=="WA")
 # Two states
 x <- subset(states, region %in% c("WA","CA"))
 # All areas in China
-x <- subset(world, str_detect(region, "China"))
+x <- subset(world, stringr::str_detect(region, "China"))
 ```
 
 # Merging Data

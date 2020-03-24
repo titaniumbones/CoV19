@@ -10,3 +10,10 @@ library(CoV19)
 ```{r, message=FALSE, warning=FALSE}
 my_plot(states, "WA", "2020-03-16")
 ```
+
+```{r, message=FALSE, warning=FALSE}
+x <- world
+x[x$date=="2020-02-12","positive"]=NA
+x[x$date=="2020-02-13","positive"]=NA
+p <- my_plot(x, "Hubei China", "2020-01-23")
+```
