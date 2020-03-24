@@ -72,7 +72,7 @@ plot2 <- function(x, region, decorate=FALSE){
   if(length(levels(x$region))>1){
     p <- p + facet_wrap(~region)
   }else{
-    p <- p + ggtitle(region)
+    p <- p + ggtitle(x$region[1])
   }
   p
 }

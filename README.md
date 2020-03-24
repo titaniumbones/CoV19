@@ -28,14 +28,17 @@ Use `head()` to look at it. Should be pretty self-evident what it is.
 
 # Functions
 
-  - `regions()` will show you the regions in each data set
-  - `plot2()` a basic plot of total, hospitalized, and deaths
+  - `regions()` will show you the regions in each data set.
+  - `plot2()` a basic plot of total, hospitalized, and deaths. First
+    argument is a data object (states, italy, world or subset of these)
+    and second argument is a region (can be partial). Use ?plot2 to read
+    the help page.
 
 # Plots
 
 ``` r
 library(CoV19)
-plot2(italy, "Lombardia", decorate=TRUE)
+plot2(italy, "Lomb", decorate=TRUE)
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
