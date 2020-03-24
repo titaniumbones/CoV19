@@ -1,14 +1,15 @@
 #' Download state data from Covid Tracking
 #' 
-#' The data cutoff is 4pm EST. So some states are delayed by one day because they report after that time.
+#' The data cutoff is 4pm EST. So some states are delayed by one day because they report after that time. https://covidtracking.com/api/states/daily
 #' 
 #' @param append Whether to append current numbers to an existing data frame (append=TRUE) or to download the whole time series again (append=FALSE).
+#' @param json Whether to get data from JSON (updated faster) or csv link.
 #' @return Saves a data frame to the data folder.
 #' @examples
 #' \dontrun{
 #' getdatastates()
 #' }
-getdatastates <- function(append=FALSE){
+getdatastates <- function(append=FALSE, json=TRUE){
   if(append){
     if(max(statedatadate) < Sys.Date()-1){
       cat(paste0("No update because the state data file max date is ", max(statedatadate), " and appending would skip a day.\n"))
@@ -16,8 +17,13 @@ getdatastates <- function(append=FALSE){
       }
     }
   if(!append){
+    if(!json){
     url <- "http://covidtracking.com/api/states/daily.csv"
     statedata <- try(read.csv(url), silent=TRUE)
+    }else{
+      url <- "https://covidtracking.com/api/states/daily"
+      statedata <- try(fromJSON("https://covidtracking.com/api/states/daily"))
+    }
     colnames(statedata)[colnames(statedata)=="state"] <- "region"
     colnames(statedata)[colnames(statedata)=="total"] <- "total.tests"
     if(!inherits(statedata, "try-error")){

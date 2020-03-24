@@ -1,0 +1,29 @@
+name: "cov19-website"
+output_dir: "docs"
+exclude: ["README_files", "README.md", "README.Rmd", "data", "inst", "man", "R", "DESCRIPTION", "NAMESPACE"]
+navbar:
+  title: "CoV-19"
+  left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "Data"
+      icon: fa-bullhorn
+      href: data.html
+    - text: "Plots"
+      icon: fa-bullhorn
+      href: plots.html
+    - text: "All States"
+      icon: fa-bullhorn
+      href: state_plots.html
+    - text: "Epidemic States"
+      icon: fa-bullhorn
+      href: epidemic_states.html
+    - text: "Lombardy Comparison"
+      icon: fa-bullhorn
+      href: walomb_plot.html
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
+    css: styles.css

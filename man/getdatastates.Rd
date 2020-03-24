@@ -4,16 +4,18 @@
 \alias{getdatastates}
 \title{Download state data from Covid Tracking}
 \usage{
-getdatastates(append = FALSE)
+getdatastates(append = FALSE, json = TRUE)
 }
 \arguments{
 \item{append}{Whether to append current numbers to an existing data frame (append=TRUE) or to download the whole time series again (append=FALSE).}
+
+\item{json}{Whether to get data from JSON (updated faster) or csv link.}
 }
 \value{
 Saves a data frame to the data folder.
 }
 \description{
-The data cutoff is 4pm EST. So some states are delayed by one day because they report after that time.
+The data cutoff is 4pm EST. So some states are delayed by one day because they report after that time. https://covidtracking.com/api/states/daily
 }
 \examples{
 \dontrun{

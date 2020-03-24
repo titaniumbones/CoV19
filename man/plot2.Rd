@@ -4,10 +4,10 @@
 \alias{plot2}
 \title{Make a plot of positives, active and recovered versus time}
 \usage{
-plot2(x, region, decorate = FALSE)
+plot2(x, region = NULL, decorate = FALSE)
 }
 \arguments{
-\item{region}{Name of a region in the region (location) column of the dataset (dataset$region). Might be country, state, or province. Use regions() to see what is available. You can pass in multiple regions.}
+\item{region}{Name of a region in the region (location) column of the dataset (dataset$region). If it is not passed in, all regions will be shown. Might be country, state, or province. Use regions() to see what is available. You can pass in multiple regions.}
 
 \item{decorate}{Mitigation times are shown if available in the mitigations data.}
 
@@ -18,6 +18,6 @@ Makes a plot of positives, active and recovered versus time. New cases per day i
 If decorate, then mitigations will be shown (if available). Plot is shown for a specific region (state, country, province, etc). Use regions() to see what locations are available. See ?getdatajhu, ?getdataitaly, ?getdatastates to see the data sources.
 }
 \examples{
-plot2(italy, region="Lombardia", decorate=TRUE)
+plot2(italy, region="Lombardia", decorate=FALSE)
 plot2(states, region=c("NY","WA"))
 }

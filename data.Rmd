@@ -1,0 +1,55 @@
+---
+title: "Data"
+---
+
+Load the package.
+
+```
+library(CoV19)
+```
+
+The data are in the following objects. They have a few common columns: date, region, positive, death. Then there are some other columns depending on the source.
+
+```
+states
+italy
+world
+```
+
+Here is an example from `states`:
+```{r}
+head(states)
+```
+
+# Subsetting data
+
+```{r}
+# Just WA
+x <- subset(states, region=="WA")
+# Two states
+x <- subset(states, region %in% c("WA","CA"))
+# All areas in China
+x <- subset(world, str_detect(region, "China"))
+```
+
+# Merging Data
+
+Let's say you want to have the sums for all regions. You can do that with `dplyr`.
+
+```{r}
+library(dplyr)
+# If you are unfamiliar with dplyr, the %>% is a pipe that sends
+# the result to the left into the function in the right
+x <- states %>% 
+  subset(region%in%c("WA","CA","OR")) %>%
+  group_by(date) %>%
+  summarize_if(is.numeric, sum, na.rm=TRUE)
+# This will not have the region column, so we add that back on
+x$region <- as.factor("WA + CA + OR")
+```
+
+We can pass this data object to `plot2` to plot.
+
+```{r, message=FALSE, warning=FALSE}
+plot2(x)
+```
