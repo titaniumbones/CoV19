@@ -26,28 +26,36 @@ To get the data, type any of these on command line. After loading.
 
 Use `head()` to look at it. Should be pretty self-evident what it is.
 
-# Plots
+# Functions
 
-There aren’t many. Yet. The basic one I am working on is new cases
-versus cases after a lockdown.
+  - `regions()` will show you the regions in each data set
+  - `plot2()` a basic plot of total, hospitalized, and deaths
+
+# Plots
 
 ``` r
 library(CoV19)
-plot1("states", "WA", lockdown="2020-03-16")
+plot2(italy, "Lombardia", decorate=TRUE)
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
 ``` r
-plot1("italy", "Lombardia", lockdown="2020-03-11")
+plot2(states, c("WA","CA"))
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
-Something is odd with the Hubei data in the JHU data set.
-
 ``` r
-plot1("world", "Hubei China", lockdown="2020-01-23")
+plot2(states, c("NY","NJ","PA","MA"))
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+
+Something is odd with the Hubei data in the JHU data set.
+
+``` r
+plot2(world, "Hubei China", decorate=TRUE)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
