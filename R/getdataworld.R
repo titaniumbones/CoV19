@@ -26,6 +26,7 @@ getdataworld <- function(){
     worlddata$date <- as.Date(stringr::str_remove(worlddata$date,"X"),"%m.%d.%y")
     worlddata$region <- paste(worlddata$Province.State, worlddata$Country.Region)
     worlddata$region <- stringr::str_trim(worlddata$region)
+    worlddata$region <- as.factor(worlddata$region)
     worlddata <- worlddata[,c("date", "region", "positive", "death")]
     world <- worlddata
     cat("Success! Data downloaded.\n")
