@@ -4,6 +4,7 @@ export(
   getdataworld,
   getdataitaly,
   plot1,
+  plot2,
   regions
 )
 
