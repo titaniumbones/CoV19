@@ -59,7 +59,7 @@ plot1 <- function(data=c("states","world","italy"), region, lockdown=NULL){
   if(!is.null(x$hospitalized)){
     p <- p + geom_rect(mapping=aes(xmin=min(x$date), xmax=min(x$date)+xw, ymin=(y1-0.075)*max(x$positive), ymax=y1*max(x$positive)), fill="blue") +
     annotate("text", x=min(x$date)+xw, y=(y1-0.075/2)*max(x$positive), label="  Hospitalized",hjust=0)
-    y2 <- y1-0.1
+    y2 <- y3 <- y1-0.1
   }
   if(!is.null(x$active)){
     p <- p + geom_rect(mapping=aes(xmin=min(x$date), xmax=min(x$date)+xw, ymin=(y2-0.075)*max(x$positive), ymax=y2*max(x$positive)), fill="yellow")  +
