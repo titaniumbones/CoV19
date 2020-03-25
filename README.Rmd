@@ -16,7 +16,7 @@ To install the package
 
 ```
 library(devtools)
-install_github(eeholmes/CoV19)
+install_github("eeholmes/CoV19"")
 ```
 
 To get the data, type any of these on command line. After loading.
