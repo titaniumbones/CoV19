@@ -16,9 +16,10 @@ x <- rbind(x, data.frame(date=as.Date("2020-03-25"), region="WA", positive=2469,
 my_plot(x, "WA", "2020-03-16")
 ```
 
-```{r, message=FALSE, warning=FALSE}
+```{r world_plot, message=FALSE, warning=FALSE}
 x <- world
 x[x$date=="2020-02-12","positive"]=NA
 x[x$date=="2020-02-13","positive"]=NA
 p <- my_plot(x, "Hubei China", "2020-01-23")
+p
 ```
