@@ -17,7 +17,18 @@ my_plot(italy, "Lombardia", "2020-03-10")
 ```{r wa_plot, message=FALSE, warning=FALSE}
 x <- subset(states, region=="WA")
 x <- rbind(x, data.frame(date=as.Date("2020-03-25"), region="WA", positive=2469, negative=NA, pending=NA, hospitalized=NA, death=123, total.tests=NA, totalTestResults=NA))
-my_plot(x, "WA", "2020-03-16")
+p <- my_plot(x, "WA")
+lockdown <- "2020-03-16"
+ltext <- "restaurants close"
+p <- p + geom_vline(xintercept = as.Date(lockdown)) +
+    annotate("text", x=as.Date(lockdown)+0.5, y=.5*ymax, hjust=0, label=ltext, color="red", size=3, angle=90)
+p <- p + geom_vline(xintercept = as.Date(lockdown)+12, linetype = "dashed") +
+    annotate("text", x=as.Date(lockdown)+12+0.5, y=.5*ymax, hjust=0, label="12 days past restaurants closed", color="red", size=3, angle=90)
+lockdown <- "2020-03-23"
+ltext <- "stay at home order"
+p <- p + geom_vline(xintercept = as.Date(lockdown)) +
+    annotate("text", x=as.Date(lockdown)+0.5, y=.5*ymax, hjust=0, label=ltext, color="red", size=3, angle=90)
+p
 ```
 
 ```{r world_plot, message=FALSE, warning=FALSE}
