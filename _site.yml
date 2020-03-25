@@ -16,7 +16,7 @@ navbar:
     - text: "All States"
       icon: fa-bullhorn
       href: state_plots.html
-    - text: "Epidemic States"
+    - text: "Select States"
       icon: fa-bullhorn
       href: epidemic_states.html
     - text: "Lombardy Comparison"

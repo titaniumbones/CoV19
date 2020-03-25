@@ -306,7 +306,7 @@ $(document).ready(function () {
   <a href="epidemic_states.html">
     <span class="fa fa-bullhorn"></span>
      
-    Epidemic States
+    Select States
   </a>
 </li>
 <li>
@@ -334,27 +334,20 @@ $(document).ready(function () {
 
 
 <p>Load the package.</p>
-<pre><code>library(CoV19)</code></pre>
+<pre class="r"><code>library(CoV19)</code></pre>
 <p>The data are in the following objects. They have a few common columns: date, region, positive, death. Then there are some other columns depending on the source.</p>
 <pre><code>states
 italy
 world</code></pre>
 <p>Here is an example from <code>states</code>:</p>
 <pre class="r"><code>head(states)</code></pre>
-<pre><code>##         date region positive negative pending hospitalized
-## 1 2020-03-24     AK       36      986      NA            0
-## 2 2020-03-24     AL      215     2106      NA           NA
-## 3 2020-03-24     AR      218      947       0           22
-## 4 2020-03-24     AS        0       NA      NA           NA
-## 5 2020-03-24     AZ      357      313      22            8
-## 6 2020-03-24     CA     1733    12567   12100           NA
-##   death total.tests
-## 1    NA        1022
-## 2     0        2321
-## 3     0        1165
-## 4     0           0
-## 5     5         692
-## 6    27       26400</code></pre>
+<pre><code>##         date region positive negative pending hospitalized death total.tests
+## 1 2020-03-24     AK       36      986      NA            0    NA        1022
+## 2 2020-03-24     AL      215     2106      NA           NA     0        2321
+## 3 2020-03-24     AR      218      947       0           22     0        1165
+## 4 2020-03-24     AS        0       NA      NA           NA     0           0
+## 5 2020-03-24     AZ      357      313      22            8     5         692
+## 6 2020-03-24     CA     1733    12567   12100           NA    27       26400</code></pre>
 <div id="subsetting-data" class="section level1">
 <h1>Subsetting data</h1>
 <pre class="r"><code># Just WA
@@ -362,7 +355,7 @@ x &lt;- subset(states, region==&quot;WA&quot;)
 # Two states
 x &lt;- subset(states, region %in% c(&quot;WA&quot;,&quot;CA&quot;))
 # All areas in China
-x &lt;- subset(world, str_detect(region, &quot;China&quot;))</code></pre>
+x &lt;- subset(world, stringr::str_detect(region, &quot;China&quot;))</code></pre>
 </div>
 <div id="merging-data" class="section level1">
 <h1>Merging Data</h1>
@@ -378,7 +371,7 @@ x &lt;- states %&gt;%
 x$region &lt;- as.factor(&quot;WA + CA + OR&quot;)</code></pre>
 <p>We can pass this data object to <code>plot2</code> to plot.</p>
 <pre class="r"><code>plot2(x)</code></pre>
-<p><img src="data_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="data_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 
 
