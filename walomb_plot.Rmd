@@ -17,7 +17,9 @@ my_plot(italy, "Lombardia", "2020-03-10")
 ```{r wa_plot, message=FALSE, warning=FALSE}
 x <- subset(states, region=="WA")
 x <- rbind(x, data.frame(date=as.Date("2020-03-25"), region="WA", positive=2469, negative=NA, pending=NA, hospitalized=NA, death=123, total.tests=NA, totalTestResults=NA))
-p <- my_plot(x, "WA")
+reg <- "WA"
+p <- my_plot(x, reg)
+ymax <- max(subset(x, region==reg)$positive, na.rm=TRUE)
 lockdown <- "2020-03-16"
 ltext <- "restaurants close"
 p <- p + geom_vline(xintercept = as.Date(lockdown)) +
