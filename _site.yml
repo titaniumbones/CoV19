@@ -8,23 +8,17 @@ navbar:
       icon: fa-home
       href: index.html
     - text: "Data"
-      icon: fa-bullhorn
       href: data.html
     - text: "Plots"
-      icon: fa-bullhorn
       href: plots.html
     - text: "All States"
-      icon: fa-bullhorn
       href: state_plots.html
     - text: "Select States"
-      icon: fa-bullhorn
       href: epidemic_states.html
     - text: "Lombardy Comparison"
-      icon: fa-bullhorn
       href: walomb_plot.html
     - text: "NY Plots"
-      icon: fa-bullhorn
-      href: walomb_plot.html
+      href: ny_plot.html
 
 output:
   html_document:
