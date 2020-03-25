@@ -1,9 +1,9 @@
 my_plot <- function(x, reg, lockdown){
   p<-plot2(x, reg)
   ymax <- max(subset(x, region==reg)$positive, na.rm=TRUE)
-  p <- p + geom_vline(data=x, xintercept = as.Date(lockdown)) +
+  p <- p + geom_vline(xintercept = as.Date(lockdown)) +
     annotate("text", x=as.Date(lockdown)+0.5, y=.5*ymax, hjust=0, label=paste(reg, "lockdown"), color="red", size=3, angle=90)
-  p <- p + geom_vline(data=y, xintercept = as.Date(lockdown)+12, linetype = "dashed") +
+  p <- p + geom_vline(xintercept = as.Date(lockdown)+12, linetype = "dashed") +
     annotate("text", x=as.Date(lockdown)+12+0.5, y=.5*ymax, hjust=0, label="12 days past lockdown", color="red", size=3, angle=90)
   p
 }

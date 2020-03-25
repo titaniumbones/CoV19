@@ -2,15 +2,15 @@
 title: "NY Plots"
 ---
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
 library(CoV19)
 ```
 
-```{r ny_plot, message=FALSE, warning=FALSE}
+```{r ny_plot, message=FALSE, warning=FALSE, echo=FALSE}
 x <- subset(states, region=="NY")
-x <- rbind(x, data.frame(date=as.Date("2020-03-25"), region="WA", positive=2469, negative=NA, pending=NA, hospitalized=NA, death=123, total.tests=NA, totalTestResults=NA))
 x$icu <- as.integer(round(0.03*x$positive,0))
-p1 <- my_plot(x, "NY", "2020-03-20")
+lockdown <- "2020-03-20"
+p1 <- my_plot(x, "NY", lockdown)
 y <- x %>% pivot_longer(
   cols = c("hospitalized", "death", "icu"),
   names_to = "type",
@@ -19,14 +19,5 @@ y <- x %>% pivot_longer(
 p2 <- qplot(date, count, data=y, geom="line", color=type)
 grid.arrange(p1,p2, ncol=1)
 ```
-
-```{r world_plot, message=FALSE, warning=FALSE}
-x <- world
-x[x$date=="2020-02-12","positive"]=NA
-x[x$date=="2020-02-13","positive"]=NA
-p <- my_plot(x, "Hubei China", "2020-01-23")
-p
-```
-
 
 

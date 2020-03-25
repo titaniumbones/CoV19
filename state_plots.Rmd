@@ -2,6 +2,10 @@
 title: "State Plots"
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
 ```{r, message=FALSE, warning=FALSE}
 library(CoV19)
 ```

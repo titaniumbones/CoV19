@@ -316,25 +316,7 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="r"><code>library(CoV19)</code></pre>
-<pre class="r"><code>x &lt;- subset(states, region==&quot;NY&quot;)
-x &lt;- rbind(x, data.frame(date=as.Date(&quot;2020-03-25&quot;), region=&quot;WA&quot;, positive=2469, negative=NA, pending=NA, hospitalized=NA, death=123, total.tests=NA, totalTestResults=NA))
-x$icu &lt;- as.integer(round(0.03*x$positive,0))
-p1 &lt;- my_plot(x, &quot;NY&quot;, &quot;2020-03-20&quot;)
-y &lt;- x %&gt;% pivot_longer(
-  cols = c(&quot;hospitalized&quot;, &quot;death&quot;, &quot;icu&quot;),
-  names_to = &quot;type&quot;,
-  values_to = &quot;count&quot;,
-  values_drop_na = FALSE)
-p2 &lt;- qplot(date, count, data=y, geom=&quot;line&quot;, color=type)
-grid.arrange(p1,p2, ncol=1)</code></pre>
 <p><img src="ny_plot_files/figure-html/ny_plot-1.png" width="672" /></p>
-<pre class="r"><code>x &lt;- world
-x[x$date==&quot;2020-02-12&quot;,&quot;positive&quot;]=NA
-x[x$date==&quot;2020-02-13&quot;,&quot;positive&quot;]=NA
-p &lt;- my_plot(x, &quot;Hubei China&quot;, &quot;2020-01-23&quot;)
-p</code></pre>
-<p><img src="ny_plot_files/figure-html/world_plot-1.png" width="672" /></p>
 
 
 
