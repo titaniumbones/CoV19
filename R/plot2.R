@@ -71,7 +71,7 @@ plot2 <- function(x, region=NULL, decorate=FALSE){
   if(decorate){
     for(i in 2:ncol(mitigations)){
       val <- colnames(mitigations)[i]
-      p <- p + geom_vline(data=y, xintercept = x[1,val]) +
+      p <- p + geom_vline(xintercept = x[1,val]) +
         annotate("text", x=x[1,val]+0.25, y=.5*max(x$positive), hjust=0, label=val, color="red", size=3, angle=90)
     }
   }
