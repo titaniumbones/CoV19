@@ -30,6 +30,10 @@ jobs:
           path: main
       - name: Set Up r
         uses: r-lib/actions/setup-r@v1
+      - name: install pandoc
+        uses: r-lib/actions/setup-pandoc@v1
+        with:
+          pandoc-version: '2.7.3' # The pandoc version to download (if necessary) and use.
       - name: install r packages
         run: |
           Rscript -e 'install.packages("devtools")'
