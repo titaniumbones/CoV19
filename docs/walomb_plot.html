@@ -335,11 +335,11 @@ $(document).ready(function () {
 
 <pre class="r"><code>library(CoV19)</code></pre>
 <pre class="r"><code>my_plot(italy, &quot;Lombardia&quot;, &quot;2020-03-10&quot;)</code></pre>
-<p><img src="walomb_plot_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="walomb_plot_files/figure-html/italy_plot-1.png" width="672" /></p>
 <pre class="r"><code>x &lt;- subset(states, region==&quot;WA&quot;)
-x &lt;- rbind(x, data.frame(date=as.Date(&quot;2020-03-25&quot;), region=&quot;WA&quot;, positive=2469, negative=NA, pending=NA, hospitalized=NA, death=123, total.tests=NA))
+x &lt;- rbind(x, data.frame(date=as.Date(&quot;2020-03-25&quot;), region=&quot;WA&quot;, positive=2469, negative=NA, pending=NA, hospitalized=NA, death=123, total.tests=NA, totalTestResults=NA))
 my_plot(x, &quot;WA&quot;, &quot;2020-03-16&quot;)</code></pre>
-<p><img src="walomb_plot_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="walomb_plot_files/figure-html/wa_plot-1.png" width="672" /></p>
 <pre class="r"><code>x &lt;- world
 x[x$date==&quot;2020-02-12&quot;,&quot;positive&quot;]=NA
 x[x$date==&quot;2020-02-13&quot;,&quot;positive&quot;]=NA

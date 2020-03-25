@@ -6,13 +6,13 @@ title: "Lombardy vs WA Plots"
 library(CoV19)
 ```
 
-```{r, message=FALSE, warning=FALSE}
+```{r italy_plot, message=FALSE, warning=FALSE}
 my_plot(italy, "Lombardia", "2020-03-10")
 ```
 
-```{r, message=FALSE, warning=FALSE}
+```{r wa_plot, message=FALSE, warning=FALSE}
 x <- subset(states, region=="WA")
-x <- rbind(x, data.frame(date=as.Date("2020-03-25"), region="WA", positive=2469, negative=NA, pending=NA, hospitalized=NA, death=123, total.tests=NA))
+x <- rbind(x, data.frame(date=as.Date("2020-03-25"), region="WA", positive=2469, negative=NA, pending=NA, hospitalized=NA, death=123, total.tests=NA, totalTestResults=NA))
 my_plot(x, "WA", "2020-03-16")
 ```
 
