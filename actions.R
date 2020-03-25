@@ -1,0 +1,6 @@
+## install.packages('devtools')
+## library('devtools')
+## install_github('eeholmes/CoV19')
+library('CoV19')
+getdata()
+updatewebpage()

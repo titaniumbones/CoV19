@@ -37,7 +37,8 @@ jobs:
       - name: Get Data
         run: |
           cd main
-          Rscript -e 'library("CoV19"); getdatastates(); getdataitaly(); getdataworld()'
+          # Rscript -e 'library("CoV19"); getdatastates(); getdataitaly(); getdataworld()'
+          Rscript 'actions.R'
       - name: Commit Changes
         run: |
           cd main
