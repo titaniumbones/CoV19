@@ -2,27 +2,27 @@
 title: "State Plots"
 ---
 
+```{r, message=FALSE, warning=FALSE}
+library(CoV19)
+```
+
 # South
 
 ```{r, message=FALSE, warning=FALSE}
-library(CoV19)
 plot2(states, c("FL","LA","GA","MS"))
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-library(CoV19)
 plot2(states, c("SC","NC","VA","WV"))
 ```
 
 # Northeast
 
 ```{r, message=FALSE, warning=FALSE}
-library(CoV19)
 plot2(states, c("NY","NJ","PA","CT"))
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-library(CoV19)
 plot2(states, c("VT","ME","NH","MA"))
 ```
 
@@ -30,44 +30,37 @@ plot2(states, c("VT","ME","NH","MA"))
 
 
 ```{r, message=FALSE, warning=FALSE}
-library(CoV19)
 plot2(states, c("OH","IN","IL","MI"))
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-library(CoV19)
 plot2(states, c("WI","MN","IA","MO"))
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-library(CoV19)
 plot2(states, c("ND","SD","NE","KS"))
 ```
 
 # North Rockies
 
 ```{r, message=FALSE, warning=FALSE}
-library(CoV19)
 plot2(states, c("ID","WY","MT"))
 ```
 
 # Four Corners
 
 ```{r, message=FALSE, warning=FALSE}
-library(CoV19)
 plot2(states, c("AZ","UT","CO","NM"))
 ```
 
 # Texas and company
 
 ```{r, message=FALSE, warning=FALSE}
-library(CoV19)
 plot2(states, c("TX","OK","AR","LA"))
 ```
 
 # West
 
 ```{r, message=FALSE, warning=FALSE}
-library(CoV19)
 plot2(states, c("CA","OR","WA","NV"))
 ```

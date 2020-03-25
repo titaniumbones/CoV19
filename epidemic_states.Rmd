@@ -8,11 +8,9 @@ plot2(states, c("NY", "NJ"))
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-library(CoV19)
 plot2(states, c("WA", "CA"))
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-library(CoV19)
 plot2(states, c("FL", "CO"))
 ```
