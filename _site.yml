@@ -22,6 +22,10 @@ navbar:
     - text: "Lombardy Comparison"
       icon: fa-bullhorn
       href: walomb_plot.html
+    - text: "NY Plots"
+      icon: fa-bullhorn
+      href: walomb_plot.html
+
 output:
   html_document:
     theme: cosmo

@@ -11,7 +11,7 @@
 
 
 
-<title>Data</title>
+<title>NY Plots</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -335,58 +335,30 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Data</h1>
+<h1 class="title toc-ignore">NY Plots</h1>
 
 </div>
 
 
-<p>Load the package.</p>
 <pre class="r"><code>library(CoV19)</code></pre>
-<p>The data are in the following objects. They have a few common columns: date, region, positive, death. Then there are some other columns depending on the source.</p>
-<pre><code>states
-italy
-world</code></pre>
-<p>Here is an example from <code>states</code>:</p>
-<pre class="r"><code>head(states)</code></pre>
-<pre><code>##         date region positive negative pending hospitalized
-## 1 2020-03-24     AK       36      986      NA            0
-## 2 2020-03-24     AL      215     2106      NA           NA
-## 3 2020-03-24     AR      218      947       0           22
-## 4 2020-03-24     AS        0       NA      NA           NA
-## 5 2020-03-24     AZ      357      313      22            8
-## 6 2020-03-24     CA     2102    13452   12100           NA
-##   death total.tests totalTestResults
-## 1    NA        1022             1022
-## 2     0        2321             2321
-## 3     0        1165             1165
-## 4     0           0                0
-## 5     5         692              670
-## 6    40       27654            15554</code></pre>
-<div id="subsetting-data" class="section level1">
-<h1>Subsetting data</h1>
-<pre class="r"><code># Just WA
-x &lt;- subset(states, region==&quot;WA&quot;)
-# Two states
-x &lt;- subset(states, region %in% c(&quot;WA&quot;,&quot;CA&quot;))
-# All areas in China
-x &lt;- subset(world, stringr::str_detect(region, &quot;China&quot;))</code></pre>
-</div>
-<div id="merging-data" class="section level1">
-<h1>Merging Data</h1>
-<p>Let’s say you want to have the sums for all regions. You can do that with <code>dplyr</code>.</p>
-<pre class="r"><code>library(dplyr)
-# If you are unfamiliar with dplyr, the %&gt;% is a pipe that sends
-# the result to the left into the function in the right
-x &lt;- states %&gt;% 
-  subset(region%in%c(&quot;WA&quot;,&quot;CA&quot;,&quot;OR&quot;)) %&gt;%
-  group_by(date) %&gt;%
-  summarize_if(is.numeric, sum, na.rm=TRUE)
-# This will not have the region column, so we add that back on
-x$region &lt;- as.factor(&quot;WA + CA + OR&quot;)</code></pre>
-<p>We can pass this data object to <code>plot2</code> to plot.</p>
-<pre class="r"><code>plot2(x)</code></pre>
-<p><img src="data_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-</div>
+<pre class="r"><code>x &lt;- subset(states, region==&quot;NY&quot;)
+x &lt;- rbind(x, data.frame(date=as.Date(&quot;2020-03-25&quot;), region=&quot;WA&quot;, positive=2469, negative=NA, pending=NA, hospitalized=NA, death=123, total.tests=NA, totalTestResults=NA))
+x$icu &lt;- as.integer(round(0.03*x$positive,0))
+p1 &lt;- my_plot(x, &quot;NY&quot;, &quot;2020-03-20&quot;)
+y &lt;- x %&gt;% pivot_longer(
+  cols = c(&quot;hospitalized&quot;, &quot;death&quot;, &quot;icu&quot;),
+  names_to = &quot;type&quot;,
+  values_to = &quot;count&quot;,
+  values_drop_na = FALSE)
+p2 &lt;- qplot(date, count, data=y, geom=&quot;line&quot;, color=type)
+grid.arrange(p1,p2, ncol=1)</code></pre>
+<p><img src="ny_plot_files/figure-html/ny_plot-1.png" width="672" /></p>
+<pre class="r"><code>x &lt;- world
+x[x$date==&quot;2020-02-12&quot;,&quot;positive&quot;]=NA
+x[x$date==&quot;2020-02-13&quot;,&quot;positive&quot;]=NA
+p &lt;- my_plot(x, &quot;Hubei China&quot;, &quot;2020-01-23&quot;)
+p</code></pre>
+<p><img src="ny_plot_files/figure-html/world_plot-1.png" width="672" /></p>
 
 
 

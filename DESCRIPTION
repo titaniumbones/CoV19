@@ -8,7 +8,7 @@ Depends:
    stringr, 
    rmarkdown, 
    knitr, 
-   ggplot2,
+   ggplot2, gridExtra,
    tidyr,
    dplyr,
    grid,

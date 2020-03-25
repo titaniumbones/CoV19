@@ -1,19 +1,23 @@
 ---
-title: "Lombardy vs WA Plots"
+title: "NY Plots"
 ---
 
 ```{r, message=FALSE, warning=FALSE}
 library(CoV19)
 ```
 
-```{r italy_plot, message=FALSE, warning=FALSE}
-my_plot(italy, "Lombardia", "2020-03-10")
-```
-
-```{r wa_plot, message=FALSE, warning=FALSE}
-x <- subset(states, region=="WA")
+```{r ny_plot, message=FALSE, warning=FALSE}
+x <- subset(states, region=="NY")
 x <- rbind(x, data.frame(date=as.Date("2020-03-25"), region="WA", positive=2469, negative=NA, pending=NA, hospitalized=NA, death=123, total.tests=NA, totalTestResults=NA))
-my_plot(x, "WA", "2020-03-16")
+x$icu <- as.integer(round(0.03*x$positive,0))
+p1 <- my_plot(x, "NY", "2020-03-20")
+y <- x %>% pivot_longer(
+  cols = c("hospitalized", "death", "icu"),
+  names_to = "type",
+  values_to = "count",
+  values_drop_na = FALSE)
+p2 <- qplot(date, count, data=y, geom="line", color=type)
+grid.arrange(p1,p2, ncol=1)
 ```
 
 ```{r world_plot, message=FALSE, warning=FALSE}
