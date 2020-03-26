@@ -16,7 +16,11 @@ my_plot(italy, "Lombardia", "2020-03-10")
 
 ```{r wa_plot, message=FALSE, warning=FALSE}
 x <- subset(states, region=="WA")
-x <- rbind(x, data.frame(date=as.Date("2020-03-25"), region="WA", positive=2469, negative=NA, pending=NA, hospitalized=NA, death=123, total.tests=NA, totalTestResults=NA))
+tmp <- x[1,]
+tmp$date <- as.Date("2020-03-26")
+tmp[1,!colnames(tmp) %in% c("date", "region")] <- NA
+tmp$positive <- 2580; tmp$death <- 132
+x <- rbind(x, tmp)
 reg <- "WA"
 p <- my_plot(x, reg)
 ymax <- max(subset(x, region==reg)$positive, na.rm=TRUE)
