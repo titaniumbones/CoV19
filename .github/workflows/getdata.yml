@@ -8,8 +8,8 @@ name: UpdateData
 jobs:
   getdata_job:
     # ubuntu is slow for some reason
-    # runs-on: ubuntu-latest
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
+    # runs-on: macos-latest
     name: Update Data
     steps:
       # only necessary if reverting to ubuntu base image
