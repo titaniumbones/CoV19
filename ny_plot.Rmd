@@ -9,8 +9,9 @@ library(CoV19)
 ```{r ny_plot, message=FALSE, warning=FALSE, echo=FALSE, fig.height=6}
 x <- subset(states, region=="NY")
 x$icu <- as.integer(round(0.03*x$positive,0))
-lockdown <- "2020-03-20"
-p1 <- my_plot(x, "NY", lockdown)
+p1 <- my_plot(x, "NY")
+p1 <- add_vline(p1, "NYC schools close", "2020-03-16")
+p1 <- add_vline(p1, "stay at home order", "2020-03-20")
 y <- x %>% pivot_longer(
   cols = c("hospitalized", "death", "icu"),
   names_to = "type",

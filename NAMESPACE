@@ -8,6 +8,7 @@ export(
   plot2,
   regions,
   my_plot,
+  add_vline,
   walomb_plot,
   updatewebpage
 )

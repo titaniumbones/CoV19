@@ -23,17 +23,9 @@ tmp$positive <- 2580; tmp$death <- 132
 x <- rbind(x, tmp)
 reg <- "WA"
 p <- my_plot(x, reg)
-ymax <- max(subset(x, region==reg)$positive, na.rm=TRUE)
-lockdown <- "2020-03-16"
-ltext <- "restaurants close"
-p <- p + geom_vline(xintercept = as.Date(lockdown)) +
-    annotate("text", x=as.Date(lockdown)+0.5, y=.5*ymax, hjust=0, label=ltext, color="red", size=3, angle=90)
-p <- p + geom_vline(xintercept = as.Date(lockdown)+12, linetype = "dashed") +
-    annotate("text", x=as.Date(lockdown)+12+0.5, y=.5*ymax, hjust=0, label="12 days past restaurants closed", color="red", size=3, angle=90)
-lockdown <- "2020-03-23"
-ltext <- "stay at home order"
-p <- p + geom_vline(xintercept = as.Date(lockdown)) +
-    annotate("text", x=as.Date(lockdown)+0.5, y=.5*ymax, hjust=0, label=ltext, color="red", size=3, angle=90)
+p <- add_vline(p, "restaurants close", "2020-03-16")
+p <- add_vline(p, "12 days past restaurants closed", "2020-03-28", linetype="dashed")
+p <- add_vline(p, "stay at home order", "2020-03-23")
 p
 ```
 
