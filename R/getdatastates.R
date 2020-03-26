@@ -30,6 +30,14 @@ getdatastates <- function(append=FALSE, json=TRUE){
       statedata <- statedata[,colnames(statedata)!="dateChecked"]
       statedata$date <- as.Date(as.character(statedata$date), "%Y%m%d")
       states <- statedata
+      # If nothing has changed then data were not updated
+      cols <- c("positive", "negative", "pending", "hospitalized", "death", "total.tests")
+      for(reg in state.abb){
+        test <- states[states$region == reg & states$date==max(states$date),cols] == states[states$region==reg & states$date==max(states$date)-1,cols]
+        if(all(test, na.rm=TRUE)){
+          states[states$region == reg & states$date==max(states$date),cols] <- NA
+        }
+      }
       save(states, file="data/states.RData")
       cat("Success! Data downloaded.\n")
       invisible(states)
