@@ -324,27 +324,27 @@ italy
 world</code></pre>
 <p>Here is an example from <code>states</code>:</p>
 <pre class="r"><code>head(states)</code></pre>
-<pre><code>##         date region positive negative pending hospitalized death
-## 1 2020-03-25     AK       42     1649      NA            1     1
-## 2 2020-03-25     AL      283     2529      NA           NA     0
-## 3 2020-03-25     AR      280     1437       0           22     2
-## 4 2020-03-25     AS        0       NA      NA           NA     0
-## 5 2020-03-25     AZ      450      323      53            8     6
-## 6 2020-03-25     CA       NA       NA      NA           NA    NA
-##   total.tests totalTestResults deathIncrease hospitalizedIncrease
-## 1        1691             1691             1                    1
-## 2        2812             2812             0                    0
-## 3        1717             1717             2                    0
-## 4           0                0             0                    0
-## 5         826              773             1                    0
-## 6          NA            15554             0                    0
-##   negativeIncrease positiveIncrease totalTestResultsIncrease
-## 1              663                6                      669
-## 2              423               68                      491
-## 3              490               62                      552
-## 4                0                0                        0
-## 5               10               93                      103
-## 6                0                0                        0</code></pre>
+<pre><code>##         date region positive negative pending hospitalized death total.tests
+## 1 2020-03-25     AK       42     1649      NA            1     1        1691
+## 2 2020-03-25     AL      283     2529      NA           NA     0        2812
+## 3 2020-03-25     AR      280     1437       0           22     2        1717
+## 4 2020-03-25     AS        0       NA      NA           NA     0           0
+## 5 2020-03-25     AZ      450      323      53            8     6         826
+## 6 2020-03-25     CA       NA       NA      NA           NA    NA          NA
+##   totalTestResults deathIncrease hospitalizedIncrease negativeIncrease
+## 1             1691             1                    1              663
+## 2             2812             0                    0              423
+## 3             1717             2                    0              490
+## 4                0             0                    0                0
+## 5              773             1                    0               10
+## 6            15554             0                    0                0
+##   positiveIncrease totalTestResultsIncrease
+## 1                6                      669
+## 2               68                      491
+## 3               62                      552
+## 4                0                        0
+## 5               93                      103
+## 6                0                        0</code></pre>
 <div id="subsetting-data" class="section level1">
 <h1>Subsetting data</h1>
 <pre class="r"><code># Just WA
