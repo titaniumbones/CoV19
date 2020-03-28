@@ -324,6 +324,7 @@ italy
 world</code></pre>
 <p>Here is an example from <code>states</code>:</p>
 <pre class="r"><code>head(states)</code></pre>
+<<<<<<< HEAD
 <pre><code>##         date region positive negative pending hospitalized death
 ## 1 2020-03-27     AK       69     2319      13            3     1
 ## 2 2020-03-27     AL      587     4184      NA           NA     3
@@ -345,6 +346,29 @@ world</code></pre>
 ## 4                0                0                        0
 ## 5             7108              159                     7267
 ## 6                0              873                      873</code></pre>
+=======
+<pre><code>##         date region positive negative pending hospitalized death total.tests
+## 1 2020-03-26     AK       59     1801      NA            3     1        1860
+## 2 2020-03-26     AL      506     3593      NA           NA     1        4099
+## 3 2020-03-26     AR      335     1504       0           41     3        1839
+## 4 2020-03-26     AS        0       NA      NA           NA     0           0
+## 5 2020-03-26     AZ      577      347      33           66     8         957
+## 6 2020-03-26     CA     3006    17380   57400           NA    65       77786
+##   totalTestResults deathIncrease hospitalizedIncrease negativeIncrease
+## 1             1860             0                    2              152
+## 2             4099             1                    0             1064
+## 3             1839             1                   19               67
+## 4                0             0                    0                0
+## 5              924             2                   58               24
+## 6            20386            12                    0             1459
+##   positiveIncrease totalTestResultsIncrease
+## 1               17                      169
+## 2              223                     1287
+## 3               55                      122
+## 4                0                        0
+## 5              127                      151
+## 6              651                     2110</code></pre>
+>>>>>>> e0c03b2370a90318619887e28b1e4b9959fc82b5
 <div id="subsetting-data" class="section level1">
 <h1>Subsetting data</h1>
 <pre class="r"><code># Just WA
