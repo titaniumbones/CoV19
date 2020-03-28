@@ -6,6 +6,8 @@ export(
   getdata,
   plot1,
   plot2,
+  plot3,
+  plot4,
   regions,
   my_plot,
   add_vline,

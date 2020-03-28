@@ -324,51 +324,41 @@ italy
 world</code></pre>
 <p>Here is an example from <code>states</code>:</p>
 <pre class="r"><code>head(states)</code></pre>
-<<<<<<< HEAD
-<pre><code>##         date region positive negative pending hospitalized death
-## 1 2020-03-27     AK       69     2319      13            3     1
-## 2 2020-03-27     AL      587     4184      NA           NA     3
-## 3 2020-03-27     AR      381     1545       0           48     3
-## 4 2020-03-27     AS        0       NA       0           NA     0
-## 5 2020-03-27     AZ      736     7455      30           NA    13
-## 6 2020-03-27     CA     3879    17380   57400          746    78
-##   total.tests totalTestResults fips deathIncrease hospitalizedIncrease
-## 1        2401             2388   02             0                    0
-## 2        4771             4771   01             2                    0
-## 3        1926             1926   05             0                    7
-## 4           0                0   60             0                    0
-## 5        8221             8191   04             5                    0
-## 6       78659            21259   06            13                  746
-##   negativeIncrease positiveIncrease totalTestResultsIncrease
-## 1              518               10                      528
-## 2              591               81                      672
-## 3               41               46                       87
-## 4                0                0                        0
-## 5             7108              159                     7267
-## 6                0              873                      873</code></pre>
-=======
-<pre><code>##         date region positive negative pending hospitalized death total.tests
-## 1 2020-03-26     AK       59     1801      NA            3     1        1860
-## 2 2020-03-26     AL      506     3593      NA           NA     1        4099
-## 3 2020-03-26     AR      335     1504       0           41     3        1839
-## 4 2020-03-26     AS        0       NA      NA           NA     0           0
-## 5 2020-03-26     AZ      577      347      33           66     8         957
-## 6 2020-03-26     CA     3006    17380   57400           NA    65       77786
-##   totalTestResults deathIncrease hospitalizedIncrease negativeIncrease
-## 1             1860             0                    2              152
-## 2             4099             1                    0             1064
-## 3             1839             1                   19               67
-## 4                0             0                    0                0
-## 5              924             2                   58               24
-## 6            20386            12                    0             1459
+<pre><code>##         date region positive negative pending hospitalized
+## 1 2020-03-28     AK       85     2836      NA            5
+## 2 2020-03-28     AL      696     4184      NA           NA
+## 3 2020-03-28     AR      404     2938       0           48
+## 4 2020-03-28     AS        0       NA       0           NA
+## 5 2020-03-28     AZ      873     7455      21           NA
+## 6 2020-03-28     CA     4643    20549   64400         1034
+##   death total.tests
+## 1     2        2921
+## 2     3        4880
+## 3     5        3342
+## 4     0           0
+## 5    15        8349
+## 6   101       89592
+##                                       hash totalTestResults
+## 1 edb7e6bcde715f8bbea31547e99aa8b4712ea5fb             2921
+## 2 c9986a845bd2f8f9c9a4294a8e5d66a01ee6aadf             4880
+## 3 47d05acbbf2fbb56ddd9c44c3b9e204d10f050c3             3342
+## 4 c6fae61e10e1a1154e848a52a3665304ec76dd53                0
+## 5 9b04c4c073cb904f606bb9efb2ac77c8ecc810cd             8328
+## 6 399721733fa1eeda46e39c0158322c44fb1d985d            25192
+##   fips deathIncrease hospitalizedIncrease negativeIncrease
+## 1   02             1                    2              517
+## 2   01             0                    0                0
+## 3   05             2                    0             1393
+## 4   60             0                    0                0
+## 5   04             2                    0                0
+## 6   06            23                  288             3169
 ##   positiveIncrease totalTestResultsIncrease
-## 1               17                      169
-## 2              223                     1287
-## 3               55                      122
+## 1               16                      533
+## 2              109                      109
+## 3               23                     1416
 ## 4                0                        0
-## 5              127                      151
-## 6              651                     2110</code></pre>
->>>>>>> e0c03b2370a90318619887e28b1e4b9959fc82b5
+## 5              137                      137
+## 6              764                     3933</code></pre>
 <div id="subsetting-data" class="section level1">
 <h1>Subsetting data</h1>
 <pre class="r"><code># Just WA
