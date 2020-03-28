@@ -324,6 +324,7 @@ italy
 world</code></pre>
 <p>Here is an example from <code>states</code>:</p>
 <pre class="r"><code>head(states)</code></pre>
+<<<<<<< HEAD
 <pre><code>##         date region positive negative pending hospitalized
 ## 1 2020-03-28     AK       85     2836      NA            5
 ## 2 2020-03-28     AL      696     4184      NA           NA
@@ -359,6 +360,36 @@ world</code></pre>
 ## 4                0                        0
 ## 5              137                      137
 ## 6              764                     3933</code></pre>
+=======
+<pre><code>##         date region positive negative pending hospitalized death total.tests
+## 1 2020-03-27     AK       69     2319      13            3     1        2401
+## 2 2020-03-27     AL      587     4184      NA           NA     3        4771
+## 3 2020-03-27     AR      381     1545       0           48     3        1926
+## 4 2020-03-27     AS        0       NA       0           NA     0           0
+## 5 2020-03-27     AZ      736     7455      30           NA    13        8221
+## 6 2020-03-27     CA     3879    17380   57400          746    78       78659
+##                                       hash totalTestResults fips deathIncrease
+## 1 588f633d59494e4d58466fccfa9628c98568396b             2388   02             0
+## 2 c3883f10c8760fdd9d196c5e2483205434bc4e0f             4771   01             2
+## 3 a67d588363970b93865400184a7b96de73096b8d             1926   05             0
+## 4 84bac05a7009ace4086a2e5280d56a5ccea95c40                0   60             0
+## 5 81fb87573f6b5484fc4879e20ef93989c969d113             8191   04             5
+## 6 d7b5a1250b2f63a88e58953c8547feab1986f158            21259   06            13
+##   hospitalizedIncrease negativeIncrease positiveIncrease
+## 1                    0              518               10
+## 2                    0              591               81
+## 3                    7               41               46
+## 4                    0                0                0
+## 5                    0             7108              159
+## 6                  746                0              873
+##   totalTestResultsIncrease
+## 1                      528
+## 2                      672
+## 3                       87
+## 4                        0
+## 5                     7267
+## 6                      873</code></pre>
+>>>>>>> 00872386c391e982a01f7c2746b9712a93c69cc1
 <div id="subsetting-data" class="section level1">
 <h1>Subsetting data</h1>
 <pre class="r"><code># Just WA
