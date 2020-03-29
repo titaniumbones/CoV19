@@ -3,7 +3,7 @@ title: "State Plots"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, fig.width=8, fig.height=8)
+knitr::opts_chunk$set(echo = FALSE, fig.width=8, fig.height=8, message=FALSE, warning=FALSE)
 ```
 
 ```{r, message=FALSE, warning=FALSE}
@@ -23,12 +23,20 @@ plot4(states, c("SC","NC","VA","WV"))
 
 # Northeast
 
-```{r, message=FALSE, warning=FALSE}
-plot4(states, c("NY","NJ","PA","CT"))
+```{r, message=FALSE, warning=FALSE, fig.height=3}
+plot4(states, c("NY"))
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-plot4(states, c("VT","ME","NH","MA"))
+plot4(states, c("MA","NJ","PA","CT"))
+```
+
+```{r, message=FALSE, warning=FALSE, fig.height=6}
+plot4(states, c("MD","DC", "RI"))
+```
+
+```{r, message=FALSE, warning=FALSE, fig.height=6}
+plot4(states, c("VT","ME","NH"))
 ```
 
 # Midwest

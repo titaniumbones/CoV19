@@ -56,12 +56,13 @@ plot4 <- function(x, region=NULL, decorate=FALSE){
   pd <- pd+scale_x_date(date_labels = "%b %d") +
     scale_y_continuous("Cumulative Deaths")
 
-  # average rate of growth (decline)
+  #-----Average rate of growth (decline)
   funave <- function(x, lag){
     y <- c(NA,diff(log(x)))
     #stats::filter(y, rep(1,lag), sides=1)/lag
     y[is.infinite(y)] <- NA
-    1+c(rep(NA,lag-1), zoo::rollapply(y, width = lag, FUN = mean, na.rm = TRUE, align = "left"))
+    tmp <- 1+c(rep(NA,lag-1), zoo::rollapply(y, width = lag, FUN = mean, na.rm = TRUE, align = "left"))
+    c(NA,zoo::rollapply(tmp, width=3, FUN=mean),NA)
   }
   lag=6
   x$rate.cases <- unname(unlist(tapply(x$new.cases, x$region, 
@@ -74,13 +75,15 @@ plot4 <- function(x, region=NULL, decorate=FALSE){
   # don't show rate if # pos < 100
   df$Rate[df$positive<100] <- NA 
   pn <- ggplot(df, aes(x=date, y=Rate, color=type)) +
-    geom_point() + geom_smooth(method = "lm", se=FALSE) +
+    geom_point() +
     geom_hline(yintercept=1, linetype="dashed") +
-    ylab("new cases rate of increase") +
+    ylab("new cases rate of increase (6 day average)") +
     annotate("text", x=min(x$date), y=1.1, label="  linear up",hjust=0, size=2) +
-    annotate("text", x=min(x$date), y=1.9, label="  exponential up",hjust=0, size=2) +
-    annotate("text", x=min(x$date), y=0.1, label="  exponential down",hjust=0, size=2) +
-    ylim(c(0,2))
+    annotate("text", x=min(x$date), y=1.7, label="  exponential up",hjust=0, size=2) +
+    annotate("text", x=min(x$date), y=0.3, label="  exponential down",hjust=0, size=2) +
+    ylim(c(0.25,1.75))
+  #pn <- pn + geom_smooth(method = "lm", se=FALSE)
+  pn <- pn + geom_line()
   
   
   #legend
