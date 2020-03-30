@@ -31,10 +31,11 @@ plot4 <- function(x, region=NULL, decorate=FALSE){
   }
   
   ylim.prim <- c(0, max(x$positive, na.rm=TRUE))   
-  ylim.sec <- c(0, max(x$death, na.rm=TRUE))
-  b <- diff(ylim.prim)/diff(ylim.sec)-1
+  ylim.sec <- c(0, max(x$death, na.rm=TRUE)*1.5)
+  b <- diff(ylim.prim)/diff(ylim.sec)
   a <- b*(ylim.prim[1] - ylim.sec[1])
   
+  x$death[x$death==0] <- NA
   p <- ggplot(x, aes(x=date, y=positive)) +
     geom_col(col="grey",fill="grey") + 
     xlab("")
@@ -121,7 +122,7 @@ plot4 <- function(x, region=NULL, decorate=FALSE){
   }else{
     p <- p + ggtitle(x$region[1])
     pd <- pd + ggtitle(paste(x$region[1], "Deaths"))
-    pn <- pn + ggtitle(paste(x$region[1], "New"))
+    pn <- pn + ggtitle(paste(x$region[1], "Rates"))
   }
   grid.arrange(p, pn, nrow=1)
 }
