@@ -11,7 +11,7 @@
 
 
 
-<title>Plots</title>
+<title>CZ Plots</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -314,29 +314,31 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Plots</h1>
+<h1 class="title toc-ignore">CZ Plots</h1>
 
 </div>
 
 
-<div id="functions" class="section level1">
-<h1>Functions</h1>
-<ul>
-<li><code>plot2()</code> a basic plot of total, hospitalized, and deaths. First argument is a data object (states, italy, world or subset of these) and second argument is a region (can be partial). Use ?plot2 to read the help page.</li>
-</ul>
+<div id="czechia" class="section level2">
+<h2>Czechia</h2>
+<p><img src="cz_plot_files/figure-html/cz_plot-1.png" width="768" /></p>
+<p><img src="cz_plot_files/figure-html/cz_plot2-1.png" width="768" /></p>
 </div>
-<div id="example-of-making-plots" class="section level1">
-<h1>Example of Making Plots</h1>
-<pre class="r"><code>library(CoV19)
-plot2(italy, &quot;Lomb&quot;, decorate=TRUE)</code></pre>
-<p><img src="plots_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<pre class="r"><code>plot2(states, c(&quot;WA&quot;,&quot;CA&quot;))</code></pre>
-<p><img src="plots_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<pre class="r"><code>plot2(states, c(&quot;NY&quot;,&quot;NJ&quot;,&quot;PA&quot;,&quot;MA&quot;))</code></pre>
-<p><img src="plots_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>Something is odd with the Hubei data in the JHU data set.</p>
-<pre class="r"><code>plot2(world, &quot;Hubei China&quot;, decorate=TRUE)</code></pre>
-<p><img src="plots_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div id="poland" class="section level2">
+<h2>Poland</h2>
+<p><img src="cz_plot_files/figure-html/pl_plot-1.png" width="768" /></p>
+<p><img src="cz_plot_files/figure-html/pl_plot2-1.png" width="768" /></p>
+</div>
+<div id="austria" class="section level2">
+<h2>Austria</h2>
+<p>Note, Austria borders Northern Italy (where the outbreak started). There is a lot of tourist traffic from Austria to Northern Italy, so it’s expected that their numbers are much higher than Czechia and Poland.</p>
+<p><img src="cz_plot_files/figure-html/au_plot-1.png" width="768" /></p>
+<p><img src="cz_plot_files/figure-html/au_plot2-1.png" width="768" /></p>
+</div>
+<div id="germany" class="section level2">
+<h2>Germany</h2>
+<p><img src="cz_plot_files/figure-html/ge_plot-1.png" width="768" /></p>
+<p><img src="cz_plot_files/figure-html/ge_plot2-1.png" width="768" /></p>
 </div>
 
 

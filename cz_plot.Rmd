@@ -38,7 +38,7 @@ Note, Austria borders Northern Italy (where the outbreak started). There is a lo
 my_plot(world, c("Austria"))
 ```
 
-```{r pl_plot2, message=FALSE, warning=FALSE, echo=FALSE}
+```{r au_plot2, message=FALSE, warning=FALSE, echo=FALSE}
 plot4(world, c("Austria"))
 ```
 

@@ -299,6 +299,9 @@ $(document).ready(function () {
 <li>
   <a href="ny_plot.html">NY Plots</a>
 </li>
+<li>
+  <a href="cz_plot.html">CZ Plots</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -325,40 +328,40 @@ world</code></pre>
 <p>Here is an example from <code>states</code>:</p>
 <pre class="r"><code>head(states)</code></pre>
 <pre><code>##         date region positive negative pending hospitalized
-## 1 2020-03-28     AK       85     2836      NA            5
-## 2 2020-03-28     AL      696     4184      NA           NA
-## 3 2020-03-28     AR      404     2938       0           48
-## 4 2020-03-28     AS        0       NA       0           NA
-## 5 2020-03-28     AZ      873     7455      21           NA
-## 6 2020-03-28     CA     4643    20549   64400         1034
+## 1 2020-03-29     AK      102     3232      NA            6
+## 2 2020-03-29     AL      806     4184      NA           NA
+## 3 2020-03-29     AR      426     3027      NA           48
+## 4 2020-03-29     AS       NA       NA      NA           NA
+## 5 2020-03-29     AZ      919    12953      NA           78
+## 6 2020-03-29     CA     5708    20549   64400         1034
 ##   death total.tests
-## 1     2        2921
-## 2     3        4880
-## 3     5        3342
+## 1     2        3334
+## 2     4        4990
+## 3     6        3453
 ## 4     0           0
-## 5    15        8349
-## 6   101       89592
+## 5    17       13872
+## 6   123       90657
 ##                                       hash totalTestResults
-## 1 edb7e6bcde715f8bbea31547e99aa8b4712ea5fb             2921
-## 2 c9986a845bd2f8f9c9a4294a8e5d66a01ee6aadf             4880
-## 3 47d05acbbf2fbb56ddd9c44c3b9e204d10f050c3             3342
-## 4 c6fae61e10e1a1154e848a52a3665304ec76dd53                0
-## 5 9b04c4c073cb904f606bb9efb2ac77c8ecc810cd             8328
-## 6 399721733fa1eeda46e39c0158322c44fb1d985d            25192
+## 1 d4c0789e67f59e98176a9ea96200ed348161c6d4             3334
+## 2 9dbf0b598d35897b1f6857899d0a834990f4ec51             4990
+## 3 2c8ed5059d37cc0aa0d20f4f3066a64db930c6c5             3453
+## 4 f2050b47409f64a09bb4e959284c05d25eca8832                0
+## 5 14deca609d3762fb4b92807785e2b9c7015661e6            13872
+## 6 c364ec885909accfd4baf8e2d329903900870ba9            26257
 ##   fips deathIncrease hospitalizedIncrease negativeIncrease
-## 1   02             1                    2              517
-## 2   01             0                    0                0
-## 3   05             2                    0             1393
+## 1   02             0                    1              396
+## 2   01             1                    0                0
+## 3   05             1                    0               89
 ## 4   60             0                    0                0
-## 5   04             2                    0                0
-## 6   06            23                  288             3169
+## 5   04             2                   78             5498
+## 6   06            22                    0                0
 ##   positiveIncrease totalTestResultsIncrease
-## 1               16                      533
-## 2              109                      109
-## 3               23                     1416
+## 1               17                      413
+## 2              110                      110
+## 3               22                      111
 ## 4                0                        0
-## 5              137                      137
-## 6              764                     3933</code></pre>
+## 5               46                     5544
+## 6             1065                     1065</code></pre>
 <div id="subsetting-data" class="section level1">
 <h1>Subsetting data</h1>
 <pre class="r"><code># Just WA
