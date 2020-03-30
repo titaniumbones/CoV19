@@ -16,11 +16,11 @@ my_plot(italy, "Lombardia", "2020-03-10")
 
 ```{r wa_plot, message=FALSE, warning=FALSE}
 x <- subset(states, region=="WA")
-tmp <- x[1,]
-tmp$date <- as.Date("2020-03-29")
-tmp[1,!colnames(tmp) %in% c("date", "region")] <- NA
-tmp$positive <- 4300; tmp$death <- 175
-x <- rbind(x, tmp)
+# tmp <- x[1,]
+# tmp$date <- as.Date("2020-03-29")
+# tmp[1,!colnames(tmp) %in% c("date", "region")] <- NA
+# tmp$positive <- 4300; tmp$death <- 175
+# x <- rbind(x, tmp)
 reg <- "WA"
 p <- my_plot(x, reg)
 p <- add_vline(p, "restaurants close", "2020-03-16")
