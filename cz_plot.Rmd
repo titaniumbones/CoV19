@@ -1,0 +1,53 @@
+---
+title: "CZ Plots"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.width=8, fig.height=4, message=FALSE, warning=FALSE)
+```
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+library(CoV19)
+```
+
+## Czechia
+
+```{r cz_plot, message=FALSE, warning=FALSE, echo=FALSE}
+my_plot(world, c("Czechia"))
+```
+
+```{r cz_plot2, message=FALSE, warning=FALSE, echo=FALSE}
+plot4(world, c("Czechia"))
+```
+
+## Poland
+
+```{r pl_plot, message=FALSE, warning=FALSE, echo=FALSE}
+my_plot(world, c("Poland"))
+```
+
+```{r pl_plot2, message=FALSE, warning=FALSE, echo=FALSE}
+plot4(world, c("Poland"))
+```
+
+## Austria
+
+Note, Austria borders Northern Italy (where the outbreak started). There is a lot of tourist traffic from Austria to Northern Italy, so it's expected that their numbers are much higher than Czechia and Poland.
+
+```{r au_plot, message=FALSE, warning=FALSE, echo=FALSE}
+my_plot(world, c("Austria"))
+```
+
+```{r au_plot2, message=FALSE, warning=FALSE, echo=FALSE}
+plot4(world, c("Austria"))
+```
+
+## Germany
+
+```{r ge_plot, message=FALSE, warning=FALSE, echo=FALSE}
+my_plot(world, c("Germany"))
+```
+
+```{r ge_plot2, message=FALSE, warning=FALSE, echo=FALSE}
+plot4(world, c("Germany"))
+```

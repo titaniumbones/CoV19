@@ -19,6 +19,8 @@ navbar:
       href: walomb_plot.html
     - text: "NY Plots"
       href: ny_plot.html
+    - text: "CZ Plots"
+      href: cz_plot.html
 
 output:
   html_document:

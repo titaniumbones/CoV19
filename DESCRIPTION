@@ -12,7 +12,8 @@ Depends:
    tidyr,
    dplyr,
    grid,
-   jsonlite
+   jsonlite,
+   zoo
 Imports: Rdpack
 Author: Eli Holmes, Seattle, USA
 Description: Code, figures and data

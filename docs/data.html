@@ -299,6 +299,9 @@ $(document).ready(function () {
 <li>
   <a href="ny_plot.html">NY Plots</a>
 </li>
+<li>
+  <a href="cz_plot.html">CZ Plots</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -324,27 +327,41 @@ italy
 world</code></pre>
 <p>Here is an example from <code>states</code>:</p>
 <pre class="r"><code>head(states)</code></pre>
-<pre><code>##         date region positive negative pending hospitalized death total.tests
-## 1 2020-03-27     AK       69     2319      13            3     1        2401
-## 2 2020-03-27     AL      587     4184      NA           NA     3        4771
-## 3 2020-03-27     AR      381     1545       0           48     3        1926
-## 4 2020-03-27     AS        0       NA       0           NA     0           0
-## 5 2020-03-27     AZ      736     7455      30           NA    13        8221
-## 6 2020-03-27     CA     3879    17380   57400          746    78       78659
-##   totalTestResults fips deathIncrease hospitalizedIncrease negativeIncrease
-## 1             2388   02             0                    0              518
-## 2             4771   01             2                    0              591
-## 3             1926   05             0                    7               41
-## 4                0   60             0                    0                0
-## 5             8191   04             5                    0             7108
-## 6            21259   06            13                  746                0
+<pre><code>##         date region positive negative pending hospitalized
+## 1 2020-03-29     AK      102     3232      NA            6
+## 2 2020-03-29     AL      806     4184      NA           NA
+## 3 2020-03-29     AR      426     3027      NA           48
+## 4 2020-03-29     AS       NA       NA      NA           NA
+## 5 2020-03-29     AZ      919    12953      NA           78
+## 6 2020-03-29     CA     5708    20549   64400         1034
+##   death total.tests
+## 1     2        3334
+## 2     4        4990
+## 3     6        3453
+## 4     0           0
+## 5    17       13872
+## 6   123       90657
+##                                       hash totalTestResults
+## 1 d4c0789e67f59e98176a9ea96200ed348161c6d4             3334
+## 2 9dbf0b598d35897b1f6857899d0a834990f4ec51             4990
+## 3 2c8ed5059d37cc0aa0d20f4f3066a64db930c6c5             3453
+## 4 f2050b47409f64a09bb4e959284c05d25eca8832                0
+## 5 14deca609d3762fb4b92807785e2b9c7015661e6            13872
+## 6 c364ec885909accfd4baf8e2d329903900870ba9            26257
+##   fips deathIncrease hospitalizedIncrease negativeIncrease
+## 1   02             0                    1              396
+## 2   01             1                    0                0
+## 3   05             1                    0               89
+## 4   60             0                    0                0
+## 5   04             2                   78             5498
+## 6   06            22                    0                0
 ##   positiveIncrease totalTestResultsIncrease
-## 1               10                      528
-## 2               81                      672
-## 3               46                       87
+## 1               17                      413
+## 2              110                      110
+## 3               22                      111
 ## 4                0                        0
-## 5              159                     7267
-## 6              873                      873</code></pre>
+## 5               46                     5544
+## 6             1065                     1065</code></pre>
 <div id="subsetting-data" class="section level1">
 <h1>Subsetting data</h1>
 <pre class="r"><code># Just WA

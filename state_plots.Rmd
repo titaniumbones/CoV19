@@ -3,7 +3,7 @@ title: "State Plots"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, fig.width=8, fig.height=8, message=FALSE, warning=FALSE)
 ```
 
 ```{r, message=FALSE, warning=FALSE}
@@ -13,58 +13,67 @@ library(CoV19)
 # South
 
 ```{r, message=FALSE, warning=FALSE}
-plot2(states, c("FL","LA","GA","MS"))
+#plot2(states, c("FL","LA","GA","MS"))
+plot4(states, c("FL","LA","GA","MS"))
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-plot2(states, c("SC","NC","VA","WV"))
+plot4(states, c("SC","NC","VA","WV"))
 ```
 
 # Northeast
 
-```{r, message=FALSE, warning=FALSE}
-plot2(states, c("NY","NJ","PA","CT"))
+```{r, message=FALSE, warning=FALSE, fig.height=3}
+plot4(states, c("NY"))
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-plot2(states, c("VT","ME","NH","MA"))
+plot4(states, c("MA","NJ","PA","CT"))
+```
+
+```{r, message=FALSE, warning=FALSE, fig.height=6}
+plot4(states, c("MD","DC", "RI"))
+```
+
+```{r, message=FALSE, warning=FALSE, fig.height=6}
+plot4(states, c("VT","ME","NH"))
 ```
 
 # Midwest
 
 
 ```{r, message=FALSE, warning=FALSE}
-plot2(states, c("OH","IN","IL","MI"))
+plot4(states, c("OH","IN","IL","MI"))
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-plot2(states, c("WI","MN","IA","MO"))
+plot4(states, c("WI","MN","IA","MO"))
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-plot2(states, c("ND","SD","NE","KS"))
+plot4(states, c("ND","SD","NE","KS"))
 ```
 
 # North Rockies
 
-```{r, message=FALSE, warning=FALSE}
-plot2(states, c("ID","WY","MT"))
+```{r, message=FALSE, warning=FALSE, fig.width=8, fig.height=6}
+plot4(states, c("ID","WY","MT"))
 ```
 
 # Four Corners
 
 ```{r, message=FALSE, warning=FALSE}
-plot2(states, c("AZ","UT","CO","NM"))
+plot4(states, c("AZ","UT","CO","NM"))
 ```
 
 # Texas and company
 
 ```{r, message=FALSE, warning=FALSE}
-plot2(states, c("TX","OK","AR","LA"))
+plot4(states, c("TX","OK","AR","LA"))
 ```
 
 # West
 
 ```{r, message=FALSE, warning=FALSE}
-plot2(states, c("CA","OR","WA","NV"))
+plot4(states, c("CA","OR","WA","NV"))
 ```
