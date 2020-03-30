@@ -29,6 +29,16 @@ getdataworld <- function(){
     worlddata$region <- as.factor(worlddata$region)
     worlddata <- worlddata[,c("date", "region", "positive", "death")]
     world <- worlddata
+    
+    # Create merged set for China
+    x <- world %>% 
+      subset(str_detect(region, "China")) %>%
+      group_by(date) %>%
+      summarize_if(is.numeric, sum, na.rm=TRUE)
+    # This will not have the region column, so we add that back on
+    x$region <- "China"
+    world <- rbind(world, x)
+    
     cat("Success! Data downloaded.\n")
     save(world, file="data/world.RData")
     invisible(world)
