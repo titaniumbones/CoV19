@@ -327,41 +327,27 @@ italy
 world</code></pre>
 <p>Here is an example from <code>states</code>:</p>
 <pre class="r"><code>head(states)</code></pre>
-<pre><code>##         date region positive negative pending hospitalized
-## 1 2020-03-29     AK      102     3232      NA            6
-## 2 2020-03-29     AL      806     4184      NA           NA
-## 3 2020-03-29     AR      426     3027      NA           48
-## 4 2020-03-29     AS       NA       NA      NA           NA
-## 5 2020-03-29     AZ      919    12953      NA           78
-## 6 2020-03-29     CA     5708    20549   64400         1034
-##   death total.tests
-## 1     2        3334
-## 2     4        4990
-## 3     6        3453
-## 4     0           0
-## 5    17       13872
-## 6   123       90657
-##                                       hash totalTestResults
-## 1 d4c0789e67f59e98176a9ea96200ed348161c6d4             3334
-## 2 9dbf0b598d35897b1f6857899d0a834990f4ec51             4990
-## 3 2c8ed5059d37cc0aa0d20f4f3066a64db930c6c5             3453
-## 4 f2050b47409f64a09bb4e959284c05d25eca8832                0
-## 5 14deca609d3762fb4b92807785e2b9c7015661e6            13872
-## 6 c364ec885909accfd4baf8e2d329903900870ba9            26257
-##   fips deathIncrease hospitalizedIncrease negativeIncrease
-## 1   02             0                    1              396
-## 2   01             1                    0                0
-## 3   05             1                    0               89
-## 4   60             0                    0                0
-## 5   04             2                   78             5498
-## 6   06            22                    0                0
-##   positiveIncrease totalTestResultsIncrease
-## 1               17                      413
-## 2              110                      110
-## 3               22                      111
-## 4                0                        0
-## 5               46                     5544
-## 6             1065                     1065</code></pre>
+<pre><code>##         date region positive negative pending hospitalized death total.tests
+## 1 2020-03-30     AK      114     3540      NA            7     3        3654
+## 2 2020-03-30     AL      859     5694      NA           NA     6        6553
+## 3 2020-03-30     AR      473     5262      NA           62     7        5735
+## 4 2020-03-30     AS       NA       NA      NA           NA     0           0
+## 5 2020-03-30     AZ     1157    15602      NA           78    20       16759
+## 6 2020-03-30     CA     6447    20549   64400         1432   133       91396
+##                                       hash totalTestResults fips deathIncrease hospitalizedIncrease
+## 1 01a1c96fd2ed214d8747ab778c2fec7203c8cd2f             3654   02             1                    1
+## 2 1ced1dbd9879f8bbc4b1f7b7876b82611895d58e             6553   01             2                    0
+## 3 7199b3f9984cc54342a3d0f5926bff36ef440b6c             5735   05             1                   14
+## 4 955da7e53291581ad33f46d87bad7e4724848fea                0   60             0                    0
+## 5 2f64421fc130d03c93a0fa1b89e44c0324ac15a3            16759   04             3                    0
+## 6 ae23f3ed0050ca169785393619aae098baa36d78            26996   06            10                  398
+##   negativeIncrease positiveIncrease totalTestResultsIncrease
+## 1              308               12                      320
+## 2             1510               53                     1563
+## 3             2235               47                     2282
+## 4                0                0                        0
+## 5             2649              238                     2887
+## 6                0              739                      739</code></pre>
 <div id="subsetting-data" class="section level1">
 <h1>Subsetting data</h1>
 <pre class="r"><code># Just WA
