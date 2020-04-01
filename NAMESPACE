@@ -16,6 +16,7 @@ export(
 )
 
 ## Imports
+importFrom(dplyr, "%>%")
 import(ggplot2)
 import(gridExtra)
 import(stringr)
