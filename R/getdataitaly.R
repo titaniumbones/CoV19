@@ -18,7 +18,7 @@ getdataitaly <- function(){
       cat("Server error. Data was not downloaded.\n")
       return()
     }
-    italydata$recovered <- italydata$totale_casi-italydata$totale_attualmente_positivi
+    italydata$recovered <- italydata$totale_casi-italydata$totale_positivi
     #rename
     iname <- c("data", "denominazione_regione", "totale_casi", "deceduti", "recovered", "totale_ospedalizzati", "terapia_intensiva")
     italydata <- italydata[,iname]

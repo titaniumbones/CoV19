@@ -19,6 +19,7 @@ plot2 <- function(x, region=NULL, decorate=FALSE){
   x$region <-droplevels(x$region)
   x$new.cases <- unname(unlist(tapply(x$positive, x$region, function(x){c(NA,diff(x))})))
   x$new.deaths <- unname(unlist(tapply(x$death, x$region, function(x){c(NA,diff(x))})))
+  x$new.deaths[x$new.deaths==0] <- NA
   if("recovered" %in% colnames(x)) x$active <- x$positive-x$recovered
   if("hospitalized" %in% colnames(x) && all(is.na(x$hospitalized))) x$hospitalized <- NULL
   if(decorate){
