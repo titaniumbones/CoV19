@@ -41,7 +41,17 @@ getdatastates <- function(json=TRUE){
       states[states$region=="WA" & states$date==as.Date("2020-03-02"), cols] <- c(28, NA, NA, 9, NA)
       states[states$region=="WA" & states$date==as.Date("2020-03-29"), cols] <- c(5062, NA, NA, NA, NA)
       states[states$region=="WA" & states$date==as.Date("2020-03-30"), cols] <- c(5515, NA, NA, NA, NA)
+      if(!any(states$region=="WA" & states$date==as.Date("2020-03-31"))){
+        states <- rbind(states, 
+                        data.frame(date=as.Date("2020-03-31"), region="WA",
+                                   positive=5984, negative=NA, hospitalized=NA,
+                                   death=247, total.tests=NA))
+      }else{
       states[states$region=="WA" & states$date==as.Date("2020-03-31"), cols] <- c(5984, NA, NA, 247, NA)
+      }
+      
+      states <- states[order(states$region, states$date),]
+      
       
       save(states, file="data/states.RData")
       cat("Success! Data downloaded.\n")
