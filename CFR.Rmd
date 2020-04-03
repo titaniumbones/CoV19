@@ -118,7 +118,7 @@ The US numbers are the sum across very diverse states, each of which is handling
 
 ```{r}
 datS <- c()
-for(reg in c("NY","NJ","WA","CA")){
+for(reg in c("NY","NJ","WA","CA","LA")){
 x<-subset(states, region==reg)
 for(lag in 0:10){
   tmp <- data.frame(x=x$death[(1+lag):nrow(x)],
@@ -141,3 +141,9 @@ reg <- "NY"
 plotfun(datS, reg, c(-5,-1), lags=0:10)
 ```
 
+The exception to this is Louisiana which has much higher death rate.
+
+```{r}
+reg <- "LA"
+plotfun(datS, reg, c(-4,0), xlims=c(100,500))
+```
