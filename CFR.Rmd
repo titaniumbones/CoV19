@@ -1,0 +1,143 @@
+---
+title: "CFR"
+---
+  
+  ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE)
+```
+
+```{r, message=FALSE, warning=FALSE, include=FALSE}
+library(CoV19)
+library(ggplot2)
+library(gridExtra)
+```
+
+The case fatality rate (CFR) is the fraction of deaths relative to the positive cases (reported positive by health officials). Once the epidemic is over, the CFR is (cumulative number of death)/(cumulative number of cases). But during the epidemic, just dividing the cumulative deaths by cumulative cases will greatly under estimate the CFR because there is a delay between the positive test and death.
+
+Instead while the epidemic is spreading, we want to compare cumulative deaths today against the cumulative cases some days prior. But what lag (days prior) to use? We can get a handle on this by looking at Italy.
+
+```{r}
+datL <- c()
+reg <- "Lombardia"
+  x<-subset(italy, region==reg)
+  for(lag in 0:10){
+    tmp <- data.frame(x=x$death[(1+lag):nrow(x)],
+                      val= x$death[(1+lag):nrow(x)]/x$positive[1:(nrow(x)-lag)],
+                      lag=lag, region=reg)
+    datL <- rbind(datL, tmp)
+  }
+  datL$lag <- as.factor(datL$lag)
+  datL$log.val <- log(datL$val)
+  
+```
+
+The plot shows the cumulative deaths against the lagged CFR. If the lag is right, the line should be flat.  Lag 0 is just cumulative deaths today divided by cumulative cases. We can see that goes up with time. The cases were slowing and the deaths were catching up so to speak. So this illustrates the problem with using lag 0. Lag 10 (ten days prior) is too long. The ratio of cumulative deaths to cumulative cases 10 days prior goes down as the case curve bends (flattens). Somewhere lag 5 to 7 is about right. The lagged CFR plot flattens somewhere in that lag.
+
+So that suggests that the CFR in Lombardia is about 20% (the level of the lag 5 line) to 23% (the level of the lag 7 line). Note this is not the infection fatality rate. Like many places that are overwhelmed, testing is focused on those who show up at the hospital in distress. The hospitalization rate is about 40% in Lombardia, suggesting that they really focus the testing on the worst cases. Also the Italy has an older population.
+
+```{r}
+reg <- "Lombardia"
+p <- ggplot(subset(datL, region==reg & lag%in%c(0,3,5,7,10)), aes(x=x,y=log.val,color=lag)) + geom_line() + geom_point() +
+  xlim(c(100,5000)) + ggtitle(reg) +
+  xlab("Cumulative Deaths") +
+  scale_y_continuous(name="lagged CFR", breaks=-4:0, 
+                     labels=round(exp(-4:0),digits=2), limits=c(-4,0))
+p
+```
+
+
+## Other countries
+
+Let's look at other countries. Remember the CFR depends a lot on how the country does testing. Test even people who aren't that sick (or who are even asymptomatic) and the CFR is lower. Test only those who need to be hospitalized, and the CFR will be higher. This calculation requires a fair number of deaths to compute. I've set the minumum at 100. The estimate of the CFR at lag 5 and 7 for the last 4 values is shown in the title.
+
+The CFRs (lag 5 to 7 days) in Europe are ca 15-21% across all the countries with over 1000 fatalities.
+
+```{r}
+dat <- c()
+for(reg in c("Italy","France","Canada", "US","Spain","United Kingdom")){
+x<-subset(world, region==reg)
+for(lag in 0:10){
+  tmp <- data.frame(x=x$death[(1+lag):nrow(x)],
+                    val= x$death[(1+lag):nrow(x)]/x$positive[1:(nrow(x)-lag)],
+                    lag=lag, region=reg)
+  dat <- rbind(dat, tmp)
+}
+}
+dat$lag <- as.factor(dat$lag)
+dat$log.val <- log(dat$val)
+
+```
+
+```{r}
+plotfun <- function(dat, reg, ylims, lags=c(0,3,5,7,10), xlims=c(100,5000)){
+  val1 <- subset(dat, region==reg & lag==5)$val
+val1 <- 100*round(mean(val1[(length(val1)-3):length(val1)]),digits=3)
+val2 <- subset(dat, region==reg & lag==7)$val
+val2 <- 100*round(mean(val2[(length(val2)-3):length(val2)]),digits=3)
+p <- ggplot(subset(dat, region==reg & lag%in%lags), aes(x=x,y=log.val,color=lag)) + geom_line() + geom_point() +
+  xlim(xlims) + ggtitle(paste0(reg," ",val1," to ", val2,"%")) +
+  xlab("Cumulative Deaths") +
+  scale_y_continuous(name="lagged CFR", breaks=ylims[1]:ylims[2], 
+                     labels=round(exp(ylims[1]:ylims[2]),digits=2), limits=ylims)
+p
+}
+```
+
+```{r}
+reg <- "Italy"
+plotfun(dat, reg, c(-4,0))
+```
+
+```{r}
+reg <- "France"
+plotfun(dat, reg, c(-4,0))
+```
+```{r}
+reg <- "Spain"
+plotfun(dat, reg, c(-4,0))
+```
+
+
+```{r}
+reg <- "United Kingdom"
+plotfun(dat, reg, c(-4,0))
+```
+
+## US CFR
+
+The flattening lags for the US is about the same, 5 to 7 days prior. But look at the lagged CFR (lag 5 to 7). It is much lower than in Europe.
+
+```{r}
+reg <- "US"
+plotfun(dat, reg, c(-5,-1), lags=0:10)
+```
+
+
+
+The US numbers are the sum across very diverse states, each of which is handling reporting at different levels and which have different testing levels. You can see that the lines don't stabilize until deaths are pretty high, about 1000. So we can only do this for NY. CFR in NY looks to be about 5% too.
+
+```{r}
+datS <- c()
+for(reg in c("NY","NJ","WA","CA")){
+x<-subset(states, region==reg)
+for(lag in 0:10){
+  tmp <- data.frame(x=x$death[(1+lag):nrow(x)],
+                    val= x$death[(1+lag):nrow(x)]/x$positive[1:(nrow(x)-lag)],
+                    lag=lag, region=reg)
+  datS <- rbind(datS, tmp)
+}
+}
+datS$lag <- as.factor(datS$lag)
+datS$log.val <- log(datS$val)
+
+```
+
+It looks to me that NY is flattening out at a little longer lag, 6-8 not 5-7.  But why is the US (and NY) so low relative to Europe? The little data available for WA and CA, by the way, points to a similar 5-6% CFR. Is NY under-reporting deaths (delays)? It is possible that the reporting system is overwhelmed but that is not the case in WA and CA. WA recently had delays in reporting but did report numbers, albeit a few days late. 
+
+This low CFR is very odd. It is hard to imagine that the US is doing more testing than Europe. Although it is the case that NY has really ramped up testing. Unfortunately without good hospitalization rates, it's hard to know if NY is testing people who are less sick than European countries are.
+
+```{r}
+reg <- "NY"
+plotfun(datS, reg, c(-5,-1), lags=0:10)
+```
+

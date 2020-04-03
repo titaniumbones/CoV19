@@ -13,14 +13,14 @@ navbar:
       href: plots.html
     - text: "All States"
       href: state_plots.html
-    - text: "Select States"
-      href: epidemic_states.html
-    - text: "Lombardy Comparison"
+    - text: "Lombardy WA"
       href: walomb_plot.html
     - text: "NY Plots"
       href: ny_plot.html
     - text: "CZ Plots"
       href: cz_plot.html
+    - text: "CFR"
+      href: CFR.html
 
 output:
   html_document:
