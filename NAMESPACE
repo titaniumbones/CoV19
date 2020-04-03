@@ -12,7 +12,8 @@ export(
   my_plot,
   add_vline,
   walomb_plot,
-  updatewebpage
+  updatewebpage,
+  cfr.plotter
 )
 
 ## Imports
