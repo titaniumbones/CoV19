@@ -4,11 +4,9 @@
 \alias{getdatastates}
 \title{Download state data from Covid Tracking}
 \usage{
-getdatastates(append = FALSE, json = TRUE)
+getdatastates(json = TRUE)
 }
 \arguments{
-\item{append}{Whether to append current numbers to an existing data frame (append=TRUE) or to download the whole time series again (append=FALSE).}
-
 \item{json}{Whether to get data from JSON (updated faster) or csv link.}
 }
 \value{
